@@ -1,4 +1,4 @@
-import type { LinksFunction } from "@remix-run/node";
+import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -19,6 +19,13 @@ export const links: LinksFunction = () => [
   { rel: "stylesheet", href: siteCss },
   { rel: "stylesheet", href: faStylesheetUrl }
 ];
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "dotPixel | Danny Cobussen", charset: "utf-8", viewport: "width=device-width,initial-scale=1" },
+    { name: "description", content: "Meet dotPixel, a full stack developer passionate about creating dynamic, user-friendly websites. I love innovative web solutions." },
+  ];
+};
 
 export default function App() {
   return (

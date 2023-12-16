@@ -3,13 +3,6 @@ import { useLoaderData } from "@remix-run/react";
 import LastFM from "~/components/LastFM";
 import SocialMedia from "~/components/SocialMedia";
 
-export const meta: MetaFunction = () => {
-  return [
-    { title: "dotPixel | Danny Cobussen" },
-    { name: "description", content: "Meet dotPixel, a full stack developer passionate about creating dynamic, user-friendly websites. I love innovative web solutions." },
-  ];
-};
-
 export default function Index() {
   return (
     <main className="flex flex-col flex-nowrap items-center justify-center h-screen gap-8 -m-20">
