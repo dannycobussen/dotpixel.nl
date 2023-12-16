@@ -1,4 +1,3 @@
-import { cssBundleHref } from "@remix-run/css-bundle";
 import type { LinksFunction } from "@remix-run/node";
 import {
   Links,
@@ -8,9 +7,17 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import faStylesheetUrl from '@fortawesome/fontawesome-svg-core/styles.css';
+import { config } from "@fortawesome/fontawesome-svg-core";
+
+// Prevent fontawesome from dynamically adding its css since we are going to include it manually
+config.autoAddCss = false;
+
+import siteCss from "./styles/site.css";
 
 export const links: LinksFunction = () => [
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+  { rel: "stylesheet", href: siteCss },
+  { rel: "stylesheet", href: faStylesheetUrl }
 ];
 
 export default function App() {
@@ -22,7 +29,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="bg-primary">
         <Outlet />
         <ScrollRestoration />
         <Scripts />
