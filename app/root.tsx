@@ -1,4 +1,5 @@
-import type { LinksFunction, MetaFunction } from "@remix-run/node";
+import { type LinksFunction, type LoaderFunction, type MetaFunction } from "@remix-run/node";
+import { json } from "@netlify/remix-runtime"
 import {
   Links,
   LiveReload,
@@ -6,6 +7,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
 import faStylesheetUrl from '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -27,7 +29,13 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+export const loader: LoaderFunction = async () => {
+  return json({ gaTrackingId: "G-WLXJFGJ1JD" });
+}
+
 export default function App() {
+  const { gaTrackingId } = useLoaderData<typeof loader>();
+
   return (
     <html lang="en">
       <head>
@@ -39,6 +47,19 @@ export default function App() {
       <body className="bg-primary">
         <Outlet />
         <ScrollRestoration />
+
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaTrackingId}`}></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', "${gaTrackingId}");
+            `
+          }}
+        />
+
         <Scripts />
         <LiveReload />
       </body>
