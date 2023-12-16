@@ -1,5 +1,6 @@
 import * as build from "@remix-run/dev/server-build";
-import { createRequestHandler } from "@netlify/remix-adapter";
+import { createRequestHandler } from "@netlify/remix-edge-adapter";
+import { Config } from "@netlify/edge-functions";
 
 const handler = createRequestHandler({
   build,
@@ -8,4 +9,4 @@ const handler = createRequestHandler({
 
 export default handler;
 
-export const config = { path: "/*", preferStatic: true }
+export const config: Config = { cache: "manual", path: "/*", excludedPath: ["/build/*", "/favicon.ico"] }

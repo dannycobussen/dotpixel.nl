@@ -6,16 +6,17 @@
   "scripts": {
     "build": "remix build",
     "dev": "remix dev --manual",
-    "start": "remix-serve ./build/index.js",
-    "typecheck": "tsc"
+    "start": "netlify serve",
+    "typecheck": "tsc -b"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@netlify/functions": "^2.4.1",
-    "@netlify/remix-adapter": "^2.2.0",
+    "@netlify/edge-functions": "^2.2.0",
+    "@netlify/remix-edge-adapter": "^3.1.0",
+    "@netlify/remix-runtime": "^2.1.0",
     "@remix-run/node": "^2.3.1",
     "@remix-run/react": "^2.3.1",
     "isbot": "^3.6.8",

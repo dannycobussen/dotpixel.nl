@@ -1,6 +1,3 @@
-import { json, type MetaFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
-import LastFM from "~/components/LastFM";
 import SocialMedia from "~/components/SocialMedia";
 
 export default function Index() {

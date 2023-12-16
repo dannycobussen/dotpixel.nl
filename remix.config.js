@@ -1,9 +1,9 @@
-import { config } from "@netlify/remix-adapter";
+import { config } from "@netlify/remix-edge-adapter";
 
 /** @type {import('@remix-run/dev').AppConfig} */
 export default {
-  ...(process.env.NODE_ENV === "production" ? config : undefined),
-  ignoredRouteFiles: ["**/.*"],
+  ...config,
+  // ignoredRouteFiles: ["**/.*"],
   // appDirectory: "app",
   // assetsBuildDirectory: "public/build",
   // publicPath: "/build/",
